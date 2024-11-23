@@ -3,7 +3,7 @@ public class Linky<E> {
         E skibidi;
         Node<E> next;
 
-        public Node(E skibidi) { this.skibidi = skibidi; this.next = null; }
+        public Node(E skibidi) { this.skibidi = skibidi; this.next = null; } // pov npe
     }
 
     private Node<E> head;
