@@ -1,4 +1,4 @@
-public class Linky<E> {
+public class LinkedList<E> {
     private static class Node<E> {
         E skibidi;
         Node<E> next;
@@ -9,7 +9,7 @@ public class Linky<E> {
     private Node<E> head;
     private int size;
 
-    public Linky() { this.head = null; this.size = 0;}
+    public LinkedList() { this.head = null; this.size = 0; }
 
     public void add(E skibidi) {
         Node<E> newNode = new Node<>(skibidi);
@@ -57,7 +57,7 @@ public class Linky<E> {
     }
 
     public static void main(String[] args) {
-        Linky<Integer> list = new Linky<>();
+        LinkedList<Integer> list = new LinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);
