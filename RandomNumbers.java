@@ -15,7 +15,7 @@ public class RandomNumbers {
             }
         }
         
-        Arrays.sort(numbers, (o1, o2) -> Double.compare(o1.doubleValue(), o2.doubleValue())); // lambda comparator
+        Arrays.sort(numbers, (a, b) -> Double.compare(a.doubleValue(), b.doubleValue())); // lambda comparator
         
         int intCount = 0;
         int doubleCount = 0;
