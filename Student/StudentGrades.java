@@ -18,9 +18,8 @@ public class StudentGrades {
             int year = Integer.parseInt(parts[3]);
             String courseName = parts[4];
             double numericGrade = Double.parseDouble(parts[5]);
-    
-            Student student = findOrCreate(lastName, firstName, ssn, year); 
             // if student alr there, no need to create new.
+            Student student = findOrCreate(lastName, firstName, ssn, year); 
             student.addCourse(courseName, numericGrade);
         }
     
