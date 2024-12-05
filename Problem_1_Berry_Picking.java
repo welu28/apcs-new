@@ -9,6 +9,7 @@ public class Problem_1_Berry_Picking{
         for(int i = 0; i < n; i++) trees[i] = io.nextInt();
         Arrays.sort(trees);
         int k = io.nextInt();
+        
         io.close();
     }
 
