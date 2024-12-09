@@ -1,4 +1,5 @@
-package Projects.Student;
+package Student;
+
 public class Course {
     private String name;
     private double grade;

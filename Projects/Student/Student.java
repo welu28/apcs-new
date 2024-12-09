@@ -1,5 +1,6 @@
-package Projects.Student;
+package Student;
 import java.util.*;
+import Student.Course;
 
 public class Student {
     private String lastName;

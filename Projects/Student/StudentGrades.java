@@ -1,6 +1,7 @@
-package Projects.Student;
+package Student;
 import java.io.*;
 import java.util.*;
+import Student.Student;
 
 public class StudentGrades {
     private ArrayList<Student> students = new ArrayList<>();
@@ -48,7 +49,7 @@ public class StudentGrades {
 
     public void statistics() {
         int numStudents = students.size();
-        double totalGradeSum = 0;
+        double totalGrade = 0;
         int totalAssignments = 0;
         int failing = 0;
         Map<Integer, List<Double>> yearGrades = new HashMap<>();
@@ -56,7 +57,7 @@ public class StudentGrades {
         for (Student student : students) {
             List<Course> courses = student.getCourses(); 
             for (Course course : courses) {
-                totalGradeSum += course.getGrade(); 
+                totalGrade += course.getGrade(); 
                 totalAssignments++;
             }
     
@@ -70,7 +71,7 @@ public class StudentGrades {
             yearGrades.get(year).add(studentAvg);
         }
     
-        double avg = totalAssignments > 0 ? totalGradeSum / totalAssignments : 0;
+        double avg = totalAssignments > 0 ? totalGrade / totalAssignments : 0;
     
         System.out.println("Overall Number of Students: " + numStudents);
         System.out.println("Average Numeric Grade: " + avg);
