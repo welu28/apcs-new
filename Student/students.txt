@@ -1,13 +1,9 @@
-LastName,FirstName,SSN,Year,CourseName,Grade
-Wenhao,Wenhao,123-45-6789,11,AP Comp Sci,100
-Wenhao,Wenhao,123-45-6789,11,AP Calc BC,98
-Wenhao,Wenhao,123-45-6789,11,AP Physics,95
-Roger,Roger,987-65-4321,12,AP Comp Sci,89
-Roger,Roger,987-65-4321,12,AP Calc BC,91
-Roger,Roger,987-65-4321,12,AP Physics,88
-Daniel,Daniel,555-66-7777,10,AP Comp Sci,82
-Daniel,Daniel,555-66-7777,10,AP Calc BC,87
-Daniel,Daniel,555-66-7777,10,AP Physics,80
-Ryan,Ryan,333-44-5555,9,AP Comp Sci,75
-Ryan,Ryan,333-44-5555,9,AP Calc BC,70
-Ryan,Ryan,333-44-5555,9,AP Physics,72
+Joe Bob,Sally,123-45-6789,11,AP Comp Sci,100
+Joe Bob,Sally,123-45-6789,11,AP Calc BC,100
+Joe Bob,Sally,123-45-6789,11,AP Physics,100
+Cakulev,Phil,222-33-4321,11,AP Comp Sci,45
+Cakulev,Phil,222-33-4321,11,AP Calc BC,51
+Cakulev,Phil,222-33-4321,11,AP Physics,37
+Stack,Trevor,262-33-8321,12,Ice Melting,78
+Stack,Trevor,262-33-8321,12,Paint drying,82
+Stack,Trevor,262-33-8321,12,Stamp Licking,90
