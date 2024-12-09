@@ -7,8 +7,7 @@ public class StudentGrades {
     public void read(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         String line;
-        
-        reader.readLine();  
+          
         while ((line = reader.readLine()) != null) {
             String[] parts = line.split(",");
     
@@ -48,37 +47,44 @@ public class StudentGrades {
 
     public void statistics() {
         int numStudents = students.size();
-        double numGrades = 0;
+        double totalGradeSum = 0;
+        int totalAssignments = 0;
         int failing = 0;
         Map<Integer, List<Double>> yearGrades = new HashMap<>();
-
+    
         for (Student student : students) {
-            double grade = student.getNumericGrade();
-            numStudents += grade;
-            if (grade < 60) {
+            List<Course> courses = student.getCourses(); 
+            for (Course course : courses) {
+                totalGradeSum += course.getGrade(); 
+                totalAssignments++;
+            }
+    
+            double studentAvg = student.getNumericGrade();
+            if (studentAvg < 60) {
                 failing++;
             }
-
+    
             int year = student.getYear();
             yearGrades.putIfAbsent(year, new ArrayList<>());
-            yearGrades.get(year).add(grade);
+            yearGrades.get(year).add(studentAvg);
         }
-
-        double avg = numStudents / numGrades;
+    
+        double avg = totalAssignments > 0 ? totalGradeSum / totalAssignments : 0;
+    
         System.out.println("Overall Number of Students: " + numStudents);
         System.out.println("Average Numeric Grade: " + avg);
         System.out.println("Number of Failing Students: " + failing);
-
+    
         for (int year : yearGrades.keySet()) {
             List<Double> grades = yearGrades.get(year);
-            double sum = 0;
+            double yearSum = 0;
             for (double grade : grades) {
-                sum += grade;
+                yearSum += grade;
             }
-            double yearAvg = sum / grades.size(); 
+            double yearAvg = grades.size() > 0 ? yearSum / grades.size() : 0;
             System.out.println("Year " + year + " Average Grade: " + yearAvg);
         }
-    }
+    }       
 
     public static void main(String[] args) throws IOException {
         StudentGrades sg = new StudentGrades();
