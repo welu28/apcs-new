@@ -1,41 +1,72 @@
 package Bank;
-import java.util.ArrayList;
+
+import java.util.*;
 
 public class Bank {
-    private String name;
-    private ArrayList<Account> accounts;
+    HashMap<String, User> users;
 
-    public Bank(String name) {
-        this.name = name;
-        this.accounts = new ArrayList<>();
+    public Bank() {
+        users = new HashMap<>();
     }
 
-    public String getName() {
-        return name;
+    public void addUser(User user) {
+        users.put(user.id, user);
     }
 
-    public Account openAccount(String customerName, double initialDeposit) {
-        Account newAccount = new Account(generateAccountNumber(), initialDeposit);
-        Customer newCustomer = new Customer(customerName, newAccount);
-        accounts.add(newAccount);
-        System.out.println("Account created for " + customerName + " with account number: " + newAccount.getAccountNumber());
-        return newAccount;
+    public User getUser(String id) {
+        return users.get(id);
     }
 
-    private int generateAccountNumber() {
-        return (int)(Math.random() * 1000000); 
-    }
+    public void processTransaction(User user, Scanner scanner) {
+        String userChoice;
+        while (true) {
+            System.out.println("Please Select a Transaction:");
+            System.out.println("P --- Obtain a Summary Statement");
+            System.out.println("S --- Process a Savings Transaction");
+            System.out.println("C --- Process a Checking Transaction");
+            System.out.println("Q --- Quit");
+            userChoice = scanner.nextLine().toUpperCase();
 
-    public Account getAccount(int accountNumber) {
-        for (Account account : accounts) {
-            if (account.getAccountNumber() == accountNumber) {
-                return account;
+            if (userChoice.equals("P")) {
+                for (Account account : user.accounts) {
+                    account.displaySummary();
+                }
+            } else if (userChoice.equals("S")) {
+                processTransaction(user, "savings", scanner);
+            } else if (userChoice.equals("C")) {
+                processTransaction(user, "checking", scanner);
+            } else if (userChoice.equals("Q")) {
+                break;
             }
         }
-        return null;
     }
 
-    public ArrayList<Account> getAccounts() {
-        return accounts;
+    public void processTransaction(User user, String accountType, Scanner scanner) {
+        Account selected = null;
+        for (Account account : user.accounts) {
+            if (account.type.equals(accountType)) {
+                selected = account;
+                break;
+            }
+        }
+
+        if (selected != null) {
+            System.out.println("D --- Process a Deposit");
+            System.out.println("W --- Process a Withdrawal");
+            System.out.println("C --- Cancel");
+            String action = scanner.nextLine().toUpperCase();
+
+            if (action.equals("D")) {
+                System.out.println("Enter Deposit Amount: ");
+                double amount = scanner.nextDouble();
+                scanner.nextLine();
+                selected.processTransaction("D", amount);
+            } else if (action.equals("W")) {
+                System.out.println("Enter Withdrawal Amount: ");
+                double amount = scanner.nextDouble();
+                scanner.nextLine();
+                selected.processTransaction("W", amount);
+            }
+        }
     }
 }
