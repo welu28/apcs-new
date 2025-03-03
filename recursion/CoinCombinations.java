@@ -9,7 +9,7 @@ public class CoinCombinations {
     }
 
     public static void main(String[] args) {
-        int amount = 10;
+        int amount = 100;
         int[] coins = {1, 5, 10, 25};
         System.out.println("Total combinations: " + countWays(amount, coins, 0));
     }
